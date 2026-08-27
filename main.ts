@@ -21,7 +21,10 @@ function make_steve () {
     scene.cameraFollowSprite(steve)
 }
 function make_blue_water () {
-	
+    let list: number[] = []
+    for (let value of list) {
+    	
+    }
 }
 let steve: Sprite = null
 scene.setBackgroundImage(img`
