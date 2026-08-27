@@ -117,7 +117,7 @@ function make_blue_water () {
         200,
         true
         )
-        tiles.placeOnRandomTile(bluewater, assets.tile`transparency16`)
+        tiles.placeOnTile(bluewater, value)
     }
 }
 let bluewater: Sprite = null
