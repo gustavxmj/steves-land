@@ -118,6 +118,7 @@ function make_blue_water () {
         true
         )
         tiles.placeOnTile(bluewater, value)
+        tiles.setTileAt(value, assets.tile`transparency16`)
     }
 }
 let bluewater: Sprite = null
