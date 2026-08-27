@@ -20,6 +20,9 @@ function make_steve () {
     controller.moveSprite(steve)
     scene.cameraFollowSprite(steve)
 }
+function make_blue_water () {
+	
+}
 let steve: Sprite = null
 scene.setBackgroundImage(img`
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
@@ -145,6 +148,7 @@ scene.setBackgroundImage(img`
     `)
 tiles.setCurrentTilemap(tilemap`level1`)
 make_steve()
+make_blue_water()
 game.onUpdateInterval(500, function () {
     if (steve.vx > 0) {
         animation.runImageAnimation(
