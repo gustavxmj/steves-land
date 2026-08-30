@@ -1,6 +1,9 @@
 namespace SpriteKind {
     export const BlueWaterKind = SpriteKind.create()
 }
+function make_blue_water_2 () {
+	
+}
 function make_steve () {
     steve = sprites.create(img`
         . . . . . . f f f f . . . . . . 
