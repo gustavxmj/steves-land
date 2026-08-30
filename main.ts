@@ -58,7 +58,7 @@ function make_snake (location: tiles.Location) {
         . . c c 6 6 7 1 1 1 1 1 6 c . . 
         . . . c c c c c c c c c c . . . 
         `],
-    500,
+    200,
     true
     )
     tiles.placeOnTile(snake, location)
