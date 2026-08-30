@@ -2,8 +2,66 @@ namespace SpriteKind {
     export const BlueWaterKind = SpriteKind.create()
     export const BlueWaterKind2 = SpriteKind.create()
 }
-function make_snake () {
-	
+function make_snake (location: tiles.Location) {
+    snake = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Enemy)
+    animation.runImageAnimation(
+    snake,
+    [img`
+        . . . . . . c c c c c c . . . . 
+        . . . . . c 6 7 7 7 7 6 c . . . 
+        . . . . c 7 7 7 7 7 7 7 7 c . . 
+        . . . c 6 7 7 7 7 7 7 7 7 6 c . 
+        . . . c 7 7 7 c 6 6 6 6 c 7 c . 
+        . . . f 7 7 7 6 f 6 6 f 6 7 f . 
+        . . . f 7 7 7 7 7 7 7 7 7 7 f . 
+        . . c f 6 7 7 c 6 7 7 7 7 f . . 
+        . c 7 7 f 6 7 7 c c c c f . . . 
+        c 7 7 7 7 f c 6 7 7 7 2 7 c . . 
+        c c 6 7 7 6 c f c 7 7 2 7 7 c . 
+        . . c 6 6 6 c c f 6 7 1 1 1 1 c 
+        . . f 6 6 6 6 c 6 6 1 1 1 1 1 f 
+        . . f c 6 6 6 6 6 1 1 1 1 1 6 f 
+        . . . f 6 6 6 1 1 1 1 1 1 6 f . 
+        . . . . f c c c c c c c c c . . 
+        `,img`
+        . . . . . . . c c c c c c . . . 
+        . . . . . . c 6 7 7 7 7 6 c . . 
+        . . . . . c 7 7 7 7 7 7 7 7 c . 
+        . . . . c 6 7 7 7 7 7 7 7 7 6 c 
+        . . . . c 7 7 7 c 6 6 6 6 c 7 c 
+        . . . . f 7 7 7 6 f 6 6 f 6 7 f 
+        . . . . f 7 7 7 7 7 7 7 7 7 7 f 
+        . . . . f 6 7 7 c 6 7 7 7 7 f . 
+        . . c c c f 6 7 7 c c c c f . . 
+        . c 7 7 7 c c f 7 7 7 2 6 c . . 
+        c 7 7 7 7 6 f c 7 7 2 7 7 6 c . 
+        c c c 6 6 6 c 6 6 7 1 1 1 1 c . 
+        . . c 6 6 6 6 6 6 1 1 1 1 1 c . 
+        . . c 6 6 6 6 6 1 1 1 1 1 6 c . 
+        . . c c 6 6 7 1 1 1 1 1 6 c . . 
+        . . . c c c c c c c c c c . . . 
+        `],
+    500,
+    true
+    )
+    tiles.placeOnTile(snake, location)
 }
 function make_steve () {
     steve = sprites.create(img`
@@ -236,9 +294,16 @@ function make_blue_water2 () {
 sprites.onOverlap(SpriteKind.Player, SpriteKind.BlueWaterKind2, function (sprite, otherSprite) {
     game.gameOver(false)
 })
+function make_snakes () {
+    for (let value of list) {
+        make_snake(value)
+    }
+}
 let bluewater2: Sprite = null
 let bluewater: Sprite = null
 let steve: Sprite = null
+let snake: Sprite = null
+let list: tiles.Location[] = []
 scene.setBackgroundImage(img`
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
@@ -363,6 +428,7 @@ scene.setBackgroundImage(img`
     `)
 tiles.setCurrentTilemap(tilemap`level1`)
 make_steve()
+make_snake(list._pickRandom())
 make_blue_water()
 make_blue_water2()
 game.onUpdateInterval(500, function () {
