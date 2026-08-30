@@ -23,6 +23,7 @@ function make_steve () {
         `, SpriteKind.Player)
     controller.moveSprite(steve)
     scene.cameraFollowSprite(steve)
+    steve.ay = 0
 }
 function make_blue_water () {
     for (let value of tiles.getTilesByType(assets.tile`myTile0`)) {
@@ -220,6 +221,9 @@ function make_blue_water2 () {
         tiles.setTileAt(value, assets.tile`transparency16`)
     }
 }
+sprites.onOverlap(SpriteKind.Player, SpriteKind.BlueWaterKind2, function (sprite, otherSprite) {
+    game.gameOver(false)
+})
 let bluewater2: Sprite = null
 let bluewater: Sprite = null
 let steve: Sprite = null
