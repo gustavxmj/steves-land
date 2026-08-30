@@ -1,8 +1,6 @@
 namespace SpriteKind {
     export const BlueWaterKind = SpriteKind.create()
-}
-function make_blue_water_2 () {
-	
+    export const BlueWaterKind2 = SpriteKind.create()
 }
 function make_steve () {
     steve = sprites.create(img`
@@ -124,6 +122,105 @@ function make_blue_water () {
         tiles.setTileAt(value, assets.tile`transparency16`)
     }
 }
+function make_blue_water2 () {
+    for (let value of tiles.getTilesByType(assets.tile`myTile1`)) {
+        bluewater2 = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, SpriteKind.BlueWaterKind2)
+        animation.runImageAnimation(
+        bluewater2,
+        [img`
+            . . . . . . . . . . . . . . . . 
+            8 . . . . . . . . . . . 8 . . . 
+            8 8 . . . . . . . . . 8 8 8 . . 
+            8 8 8 . . . . . . . 8 8 8 8 8 . 
+            8 8 8 8 8 . . . 8 8 8 8 8 8 8 8 
+            8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+            8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+            8 8 8 8 8 8 8 8 8 8 8 6 8 8 8 6 
+            8 8 8 8 8 6 8 6 8 8 6 6 6 6 6 6 
+            8 8 8 8 6 8 6 6 8 8 8 8 8 6 6 6 
+            6 6 6 8 6 6 6 6 6 8 8 8 6 6 6 6 
+            6 8 8 6 6 6 6 6 6 6 6 6 6 6 8 8 
+            6 6 6 6 6 6 8 8 6 6 6 6 6 6 6 6 
+            6 6 8 8 6 6 6 6 6 6 8 8 6 6 6 6 
+            6 6 6 6 6 6 6 6 6 8 8 8 6 6 6 6 
+            6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . 8 . . . . . . . . . . . 8 . . 
+            8 8 8 . . . . . . . . . 8 8 8 . 
+            8 8 8 8 . . . . . . . 8 8 8 8 8 
+            8 8 8 8 8 8 . . . 8 8 8 8 8 8 8 
+            8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+            8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+            8 8 8 8 8 8 8 8 8 8 6 8 8 8 6 6 
+            8 8 8 8 6 8 6 8 8 6 6 6 6 6 6 6 
+            8 8 8 6 8 6 6 8 8 8 8 8 6 6 6 6 
+            6 6 8 6 6 6 6 6 8 8 8 6 6 6 6 6 
+            8 8 6 6 6 6 6 6 6 6 6 6 6 8 8 6 
+            6 6 6 6 6 8 8 6 6 6 6 6 6 6 6 6 
+            6 8 8 6 6 6 6 6 6 8 8 6 6 6 6 6 
+            6 6 6 6 6 6 6 6 8 8 8 6 6 6 8 8 
+            6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . . 8 . . . . . . . . . . . 8 . 
+            . 8 8 8 . . . . . . . . . 8 8 8 
+            8 8 8 8 8 . . . . . . . 8 8 8 8 
+            8 8 8 8 8 8 8 . . . 8 8 8 8 8 8 
+            8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+            8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+            8 8 8 8 8 8 8 8 8 6 8 8 8 6 6 8 
+            8 8 8 6 8 6 8 8 6 6 6 6 6 6 6 8 
+            8 8 6 8 6 6 8 8 8 8 8 6 6 6 6 6 
+            6 8 6 6 6 6 6 8 8 8 6 6 6 6 6 6 
+            8 6 6 6 6 6 6 6 6 6 6 6 8 8 6 6 
+            6 6 6 6 8 8 6 6 6 6 6 6 6 6 6 6 
+            8 8 6 6 6 6 6 6 8 8 6 6 6 6 6 6 
+            6 6 6 6 6 6 6 8 8 8 6 6 6 8 8 6 
+            6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . 8 . . . . . . . . . . . 8 . . 
+            8 8 8 . . . . . . . . . 8 8 8 . 
+            8 8 8 8 . . . . . . . 8 8 8 8 8 
+            8 8 8 8 8 8 . . . 8 8 8 8 8 8 8 
+            8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+            8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+            8 8 8 8 8 8 8 8 8 8 6 8 8 8 6 6 
+            8 8 8 8 6 8 6 8 8 6 6 6 6 6 6 6 
+            8 8 8 6 8 6 6 8 8 8 8 8 6 6 6 6 
+            6 6 8 6 6 6 6 6 8 8 8 6 6 6 6 6 
+            8 8 6 6 6 6 6 6 6 6 6 6 6 8 8 6 
+            6 6 6 6 6 8 8 6 6 6 6 6 6 6 6 6 
+            6 8 8 6 6 6 6 6 6 8 8 6 6 6 6 6 
+            6 6 6 6 6 6 6 6 8 8 8 6 6 6 8 8 
+            6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
+            `],
+        200,
+        true
+        )
+        tiles.placeOnTile(bluewater2, value)
+        tiles.setTileAt(value, assets.tile`transparency16`)
+    }
+}
+let bluewater2: Sprite = null
 let bluewater: Sprite = null
 let steve: Sprite = null
 scene.setBackgroundImage(img`
@@ -251,6 +348,7 @@ scene.setBackgroundImage(img`
 tiles.setCurrentTilemap(tilemap`level1`)
 make_steve()
 make_blue_water()
+make_blue_water2()
 game.onUpdateInterval(500, function () {
     if (steve.vx > 0) {
         animation.runImageAnimation(
