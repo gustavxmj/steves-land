@@ -21,9 +21,9 @@ function make_steve () {
         . . . . . f f f f f f . . . . . 
         . . . . . f f . . f f . . . . . 
         `, SpriteKind.Player)
-    controller.moveSprite(steve)
+    controller.moveSprite(steve, 100, 0)
     scene.cameraFollowSprite(steve)
-    steve.ay = 0
+    steve.ay = 200
 }
 function make_blue_water () {
     for (let value of tiles.getTilesByType(assets.tile`myTile0`)) {
@@ -123,6 +123,11 @@ function make_blue_water () {
         tiles.setTileAt(value, assets.tile`transparency16`)
     }
 }
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (steve.vy == 0) {
+        steve.vy = -130
+    }
+})
 function make_blue_water2 () {
     for (let value of tiles.getTilesByType(assets.tile`myTile1`)) {
         bluewater2 = sprites.create(img`
