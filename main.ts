@@ -2,6 +2,9 @@ namespace SpriteKind {
     export const BlueWaterKind = SpriteKind.create()
     export const BlueWaterKind2 = SpriteKind.create()
 }
+function make_snake () {
+	
+}
 function make_steve () {
     steve = sprites.create(img`
         . . . . . . f f f f . . . . . . 
@@ -24,6 +27,10 @@ function make_steve () {
     controller.moveSprite(steve, 100, 0)
     scene.cameraFollowSprite(steve)
     steve.ay = 200
+    tiles.placeOnRandomTile(steve, assets.tile`myTile2`)
+    for (let value of tiles.getTilesByType(assets.tile`myTile2`)) {
+        tiles.setTileAt(value, assets.tile`transparency16`)
+    }
 }
 function make_blue_water () {
     for (let value of tiles.getTilesByType(assets.tile`myTile0`)) {
