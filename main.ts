@@ -1,6 +1,7 @@
 namespace SpriteKind {
     export const BlueWaterKind = SpriteKind.create()
     export const BlueWaterKind2 = SpriteKind.create()
+    export const FlyingBlockKind = SpriteKind.create()
 }
 function make_snake (location: tiles.Location) {
     snake = sprites.create(img`
@@ -291,6 +292,29 @@ function make_blue_water2 () {
         tiles.setTileAt(value, assets.tile`transparency16`)
     }
 }
+function make_flying_blocks () {
+    for (let value of tiles.getTilesByType(assets.tile`myTile4`)) {
+        flyingblock = sprites.create(img`
+            . . . . . . . . . b b b b . . . 
+            . . . . . . b b b d d d d b . . 
+            . . . . . . b d d d d d d b . . 
+            . . . . b b d d d d d b b d . . 
+            . . . . b d d d d d d b b d b . 
+            . . . . c d d d d d b b d b c . 
+            . . . b c c b b b b d d b c c . 
+            . . b b c c c b d d b c c c c . 
+            . b b d d d b b b b b b c c c c 
+            . c d d d d d d b d b c c c b c 
+            . c b d d d b b d b c c c b b c 
+            c b c c c c b d d b b b b b c c 
+            c c b b b d d b c c b b b b c c 
+            c c c c c c c c c b b b b c c . 
+            . c c c c b b b b b b b c c . . 
+            . . . . c c c c c c c c . . . . 
+            `, SpriteKind.FlyingBlockKind)
+        tiles.placeOnTile(flyingblock, value)
+    }
+}
 sprites.onOverlap(SpriteKind.Player, SpriteKind.BlueWaterKind2, function (sprite, otherSprite) {
     game.gameOver(false)
 })
@@ -299,6 +323,7 @@ function make_snakes () {
         make_snake(value)
     }
 }
+let flyingblock: Sprite = null
 let bluewater2: Sprite = null
 let bluewater: Sprite = null
 let steve: Sprite = null
@@ -431,6 +456,7 @@ make_steve()
 make_snake(list._pickRandom())
 make_blue_water()
 make_blue_water2()
+make_flying_blocks()
 game.onUpdateInterval(500, function () {
     if (steve.vx > 0) {
         animation.runImageAnimation(
