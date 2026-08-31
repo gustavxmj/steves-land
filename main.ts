@@ -319,8 +319,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.BlueWaterKind2, function (sprite
     game.gameOver(false)
 })
 function make_snakes () {
-    for (let value of list) {
+    for (let value of tiles.getTilesByType(assets.tile`myTile3`)) {
         make_snake(value)
+        tiles.setTileAt(value, assets.tile`transparency16`)
     }
 }
 let flyingblock: Sprite = null
@@ -328,7 +329,6 @@ let bluewater2: Sprite = null
 let bluewater: Sprite = null
 let steve: Sprite = null
 let snake: Sprite = null
-let list: tiles.Location[] = []
 scene.setBackgroundImage(img`
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
@@ -453,10 +453,9 @@ scene.setBackgroundImage(img`
     `)
 tiles.setCurrentTilemap(tilemap`level1`)
 make_steve()
-make_snake(list._pickRandom())
 make_blue_water()
 make_blue_water2()
-make_flying_blocks()
+make_snakes()
 game.onUpdateInterval(500, function () {
     if (steve.vx > 0) {
         animation.runImageAnimation(
